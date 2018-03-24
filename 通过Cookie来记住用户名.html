@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>记住用户名</title>
+		<script>
+			function setCookie(name,value,iDay)
+        	{
+        		var oDate=new Date();
+        		
+        		//oDate.setdate(oDate.getDate()+iDay);
+        		oDate.setDate(oDate.getDate()+iDay);
+        		document.cookie=name+'='+value+" ;expirese"+oDate;
+        		
+        	}
+        	
+        	function getCookie(name)
+        	{
+        		var m=document.cookie.split('; ');
+        		for(var i=0;i<m.length;i++)
+        		{
+        			var m1=m[i].split('=');
+        			if(m1[0]==name)
+        			{
+        				return m1[1]
+        			}
+        		}
+        		return '';
+        	}
+        	
+        	function removeCookie(name)
+        	{
+        		setCookie(name,'1',-1);
+        	}
+        	window.onload=function()
+        	{
+        		var Form1=document.getElementById("form1");
+        		var oUser=document.getElementsByName('user')[0];
+        		var clear=document.getElementsByTagName('a')[0];
+        		
+        		
+        		Form1.onsubmit=function()
+        		{
+        			setCookie('user',oUser.value,30);
+        		}
+        		
+
+        		oUser.value=getCookie('user');
+        		
+        		clear.onclick=function()
+        		{
+        			removeCookie('user');
+        			oUser.value='';
+        		}
+        		
+        		
+        	}
+		</script>
+	</head>
+	<body>
+		<form id="form1" action="https://www.miaov.com/">
+			用户：<input type="text" name="user"/>
+			密码：<input type="password" name="pass" />
+			<input type="submit" value="登录"  />
+			<a href="javascript:;" >清除历史</a>
+		</form>
+	</body>
+</html>
