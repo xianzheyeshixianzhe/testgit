@@ -61,13 +61,13 @@
 						ISdeep=-10;
 					}
 					
-					if(oDiv.offsetLeft==iTarget)
+					if(oDiv.offsetLeft==iTarget)//是否到达终点
 					{
-						clearInterval(timer);
+						clearInterval(timer);//到达终点
 					}
 					else
 					{
-						oDiv.style.left=oDiv.offsetLeft+ISdeep+'px';
+						oDiv.style.left=oDiv.offsetLeft+ISdeep+'px';//到达之前 
 					}
 				},30);
 				
